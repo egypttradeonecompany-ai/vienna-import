@@ -78,7 +78,7 @@
             margin-right: auto;
         }
 
-        /* شريط البحث السريع والفلترة (على طريقة المنصات العالمية) */
+        /* شريط الفلترة السريع */
         .filter-bar {
             background: #1a1a1a;
             padding: 20px;
@@ -127,7 +127,7 @@
             background: #ccc;
         }
 
-        /* معرض الشاحنات (Stock Grid) */
+        /* معرض الشاحنات */
         .stock-section {
             padding: 20px 20px 80px 20px;
             max-width: 1200px;
@@ -205,6 +205,30 @@
             color: #121212;
         }
 
+        /* زر الواتساب العائم */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
         /* الفوتر والتواصل */
         .contact-footer {
             background: #0d0d0d;
@@ -225,6 +249,11 @@
 </head>
 <body>
 
+    <!-- زر واتساب عائم دائري -->
+    <a href="https://wa.me/436767919720?text=مرحباً فيينا للاستيراد، أرغب في الاستفسار عن الشاحنات والمعدات المتاحة." class="whatsapp-float" target="_blank" title="تواصل عبر واتساب">
+        💬
+    </a>
+
     <header>
         <div class="logo">
             VIENNA IMPORT
@@ -238,12 +267,12 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>منصة رؤوس الشاحنات والمعدات الثقيلة</h1>
+            <h1>منصة رؤوس الشاحنات والمعدات الثقيلة والبردات</h1>
             <p>اختر أحدث الموديلات الأوروبية المتاحة للاستيراد المباشر والشحن الفوري إلى مصر.</p>
         </div>
     </section>
 
-    <!-- شريط الفلترة السريع (طريقة منصات العرض العالمية) -->
+    <!-- شريط الفلترة المحدث (مع مان وإيفكو والبردات) -->
     <div class="filter-bar">
         <div class="filter-group">
             <label>الماركة:</label>
@@ -252,13 +281,17 @@
                 <option value="Mercedes">مرسيدس (Mercedes)</option>
                 <option value="Scania">سكانيا (Scania)</option>
                 <option value="Volvo">فولفو (Volvo)</option>
+                <option value="MAN">مان (MAN)</option>
+                <option value="Iveco">إيفكو (Iveco)</option>
             </select>
         </div>
         <div class="filter-group">
-            <label>نوع الناقل / الرأس:</label>
+            <label>نوع الناقل / الرأس / المقطورة:</label>
             <select id="typeFilter">
+                <option value="all">كل الأنواع</option>
                 <option value="tractor">رأس شاحنة (Tractor Unit)</option>
                 <option value="heavy">معدات ثقيلة</option>
+                <option value="fridge">بردات (Refrigerated Trailers)</option>
             </select>
         </div>
         <button class="filter-btn" onclick="filterStock()">تحديث العرض</button>
@@ -266,10 +299,10 @@
 
     <!-- قسم مخزون الشاحنات -->
     <section class="stock-section" id="stock">
-        <h2 class="section-title">أحدث رؤوس الشاحنات المتاحة للاستيراد</h2>
+        <h2 class="section-title">أحدث الشاحنات والبردات المتاحة للاستيراد</h2>
         <div class="stock-grid">
             
-            <div class="stock-card" data-brand="Mercedes">
+            <div class="stock-card" data-brand="Mercedes" data-type="tractor">
                 <div class="stock-img-placeholder">مرسيدس أكتروس - معاينة المواصفات</div>
                 <div class="stock-details">
                     <h3>Mercedes-Benz Actros 1845</h3>
@@ -282,7 +315,7 @@
                 </div>
             </div>
 
-            <div class="stock-card" data-brand="Scania">
+            <div class="stock-card" data-brand="Scania" data-type="tractor">
                 <div class="stock-img-placeholder">سكانيا آر سيريز - معاينة المواصفات</div>
                 <div class="stock-details">
                     <h3>Scania R450 Highline</h3>
@@ -295,16 +328,42 @@
                 </div>
             </div>
 
-            <div class="stock-card" data-brand="Volvo">
-                <div class="stock-img-placeholder">فولفو إف إتش - معاينة المواصفات</div>
+            <div class="stock-card" data-brand="MAN" data-type="tractor">
+                <div class="stock-img-placeholder">مان تي جي إكس - معاينة المواصفات</div>
                 <div class="stock-details">
-                    <h3>Volvo FH 500 I-Save</h3>
+                    <h3>MAN TGX 18.480 EfficientLine</h3>
+                    <ul class="specs-table">
+                        <li><span>سنة الصنع:</span> <span>2021</span></li>
+                        <li><span>المحرك:</span> <span>قوة عالية مع كفاءة وقود</span></li>
+                        <li><span>الحالة:</span> <span>وارد أوروبي فحص تام</span></li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="inquireTruck('MAN TGX 18.480')" class="btn-whatsapp-card">طلب تفاصيل السعر والشحن</a>
+                </div>
+            </div>
+
+            <div class="stock-card" data-brand="Iveco" data-type="tractor">
+                <div class="stock-img-placeholder">إيفكو إكس واي - معاينة المواصفات</div>
+                <div class="stock-details">
+                    <h3>Iveco S-Way 490</h3>
                     <ul class="specs-table">
                         <li><span>سنة الصنع:</span> <span>2022</span></li>
-                        <li><span>المحرك:</span> <span>تقنية توفير الوقود الحديثة</span></li>
-                        <li><span>الحالة:</span> <span>جاهز للشحن والتخليص</span></li>
+                        <li><span>المحرك:</span> <span> Cursor 13 - Euro 6</span></li>
+                        <li><span>الحالة:</span> <span>كسر زيرو استيراد مباشر</span></li>
                     </ul>
-                    <a href="javascript:void(0)" onclick="inquireTruck('Volvo FH 500')" class="btn-whatsapp-card">طلب تفاصيل السعر والشحن</a>
+                    <a href="javascript:void(0)" onclick="inquireTruck('Iveco S-Way 490')" class="btn-whatsapp-card">طلب تفاصيل السعر والشحن</a>
+                </div>
+            </div>
+
+            <div class="stock-card" data-brand="Volvo" data-type="fridge">
+                <div class="stock-img-placeholder">مقطورة براد - معاينة المواصفات</div>
+                <div class="stock-details">
+                    <h3>مقطورة براد تبريد عميق (Refrigerated Trailer)</h3>
+                    <ul class="specs-table">
+                        <li><span>وحدة التبريد:</span> <span>Carrier / Thermo King</span></li>
+                        <li><span>الحالة:</span> <span>محاور أوروبية معزولة بالكامل</span></li>
+                        <li><span>الاستخدام:</span> <span>نقل المجمدات والخضروات</span></li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="inquireTruck('مقطورة براد تبريد عميق')" class="btn-whatsapp-card">طلب تفاصيل السعر والشحن</a>
                 </div>
             </div>
 
@@ -313,24 +372,31 @@
 
     <section class="contact-footer" id="contact">
         <h3>Vienna Import - فيينا للاستيراد والتصدير</h3>
-        <p>النمسا (واتساب): <span>+43 676 7919720</span></p>
+        <p>النمسا (واتساب): <span>+43 676 7919720</span>[cite: 7]</p>
         <p>مصر (اتصال مباشر): <span>+20 100 504 5120</span></p>
         <p style="margin-top: 25px; font-size: 13px; color: #555;">© 2026 Vienna Import. جميع الحقوق محفوظة.</p>
     </section>
 
     <script>
         function inquireTruck(truckName) {
-            const message = `مرحباً فيينا للاستيراد، أرغب في معرفة تفاصيل استيراد الشاحنة: ${truckName} وشروط التسليم في مصر.`;
+            const message = `مرحباً فيينا للاستيراد، أرغب في معرفة تفاصيل استيراد: ${truckName} وشروط التسليم في مصر.`;
             const phone = "436767919720";
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
         function filterStock() {
             const brand = document.getElementById('brandFilter').value;
+            const type = document.getElementById('typeFilter').value;
             const cards = document.querySelectorAll('.stock-card');
             
             cards.forEach(card => {
-                if(brand === 'all' || card.getAttribute('data-brand') === brand) {
+                const cardBrand = card.getAttribute('data-brand');
+                const cardType = card.getAttribute('data-type');
+                
+                let brandMatch = (brand === 'all' || cardBrand === brand);
+                let typeMatch = (type === 'all' || cardType === type);
+
+                if(brandMatch && typeMatch) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
