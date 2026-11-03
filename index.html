@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فيينا للاستيراد | Vienna Import - استيراد الشاحنات الأوروبية الثقيلة</title>
+    <title>فيينا للاستيراد | Vienna Import - رؤوس الشاحنات والمعدات الثقيلة</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -21,7 +21,7 @@
         header {
             background: rgba(18, 18, 18, 0.95);
             border-bottom: 1px solid #333;
-            padding: 20px 50px;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -31,20 +31,30 @@
             z-index: 1000;
         }
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             color: #fff;
             letter-spacing: 1px;
         }
         .logo span {
             color: #888;
-            font-size: 14px;
+            font-size: 13px;
             display: block;
         }
-        /* قسم الواجهة (خلفية الغلاف الشخصية cover.jpg) */
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        /* الواجهة الرئيسية */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(18,18,18,0.9)), url('cover.jpg') no-repeat center center/cover;
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(18,18,18,0.95)), url('cover.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -53,76 +63,149 @@
             margin-top: 60px;
         }
         .hero-content h1 {
-            font-size: 45px;
+            font-size: 40px;
             font-weight: 900;
             margin-bottom: 15px;
             color: #fff;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
         .hero-content p {
-            font-size: 20px;
+            font-size: 18px;
             color: #ccc;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
-        /* نموذج الطلب الذكي (لتوفير وقت العميل والشركة) */
-        .smart-form-section {
-            padding: 80px 20px;
+
+        /* شريط البحث السريع والفلترة (على طريقة المنصات العالمية) */
+        .filter-bar {
             background: #1a1a1a;
-            display: flex;
-            justify-content: center;
-        }
-        .form-card {
-            background: #222;
+            padding: 20px;
+            max-width: 1100px;
+            margin: -30px auto 40px auto;
+            position: relative;
+            z-index: 10;
+            border-radius: 10px;
             border: 1px solid #333;
-            padding: 40px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-        .form-card h2 {
-            margin-bottom: 25px;
-            font-size: 24px;
-            text-align: center;
-            color: #fff;
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
         }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
+        .filter-group label {
             display: block;
-            margin-bottom: 8px;
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+        .filter-group select {
+            width: 100%;
+            padding: 10px;
+            background: #121212;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+        .filter-btn {
+            background: #fff;
+            color: #121212;
+            border: none;
+            padding: 0 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .filter-btn:hover {
+            background: #ccc;
+        }
+
+        /* معرض الشاحنات (Stock Grid) */
+        .stock-section {
+            padding: 20px 20px 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: #fff;
+            border-right: 4px solid #fff;
+            padding-right: 15px;
+        }
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .stock-card {
+            background: #1a1a1a;
+            border: 1px solid #2d2d2d;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .stock-card:hover {
+            transform: translateY(-5px);
+            border-color: #555;
+        }
+        .stock-img-placeholder {
+            height: 180px;
+            background: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 15px;
+            border-bottom: 1px solid #2d2d2d;
+        }
+        .stock-details {
+            padding: 20px;
+        }
+        .stock-details h3 {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .specs-table {
+            list-style: none;
+            margin-bottom: 20px;
             font-size: 14px;
             color: #bbb;
         }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: #121212;
-            border: 1px solid #444;
-            color: #fff;
-            border-radius: 6px;
-            font-size: 16px;
+        .specs-table li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #222;
         }
-        .btn-submit {
-            background: #fff;
-            color: #121212;
-            padding: 14px;
-            width: 100%;
-            border: none;
-            border-radius: 6px;
+        .btn-whatsapp-card {
+            display: block;
+            text-align: center;
+            background: #222;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
             font-weight: 700;
-            font-size: 18px;
-            cursor: pointer;
+            font-size: 14px;
+            border: 1px solid #444;
             transition: 0.3s;
         }
-        .btn-submit:hover {
-            background: #ddd;
+        .btn-whatsapp-card:hover {
+            background: #fff;
+            color: #121212;
         }
-        /* تواصل معنا */
+
+        /* الفوتر والتواصل */
         .contact-footer {
             background: #0d0d0d;
             padding: 50px 20px;
@@ -131,7 +214,7 @@
         }
         .contact-footer p {
             margin: 10px 0;
-            font-size: 18px;
+            font-size: 17px;
             color: #aaa;
         }
         .contact-footer span {
@@ -145,64 +228,114 @@
     <header>
         <div class="logo">
             VIENNA IMPORT
-            <span>فيينا للاستيراد</span>
+            <span>فيينا للاستيراد والتصدير</span>
         </div>
+        <nav>
+            <a href="#stock">المخزون والأسطول</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>استيراد أقوى الشاحنات الأوروبية الثقيلة إلى مصر</h1>
-            <p>نقدم حلول لوجستية متكاملة ومعايير ثقة مطلقة في جلب أحدث الموديلات من قلب أوروبا.</p>
+            <h1>منصة رؤوس الشاحنات والمعدات الثقيلة</h1>
+            <p>اختر أحدث الموديلات الأوروبية المتاحة للاستيراد المباشر والشحن الفوري إلى مصر.</p>
         </div>
     </section>
 
-    <!-- نظام الطلب والاستفسار السريع والذكي -->
-    <section class="smart-form-section">
-        <div class="form-card">
-            <h2>احجز استشارتك أو اطلب شاحنتك الآن</h2>
-            <form id="orderForm" onsubmit="sendToWhatsApp(event)">
-                <div class="form-group">
-                    <label>الاسم الكريم:</label>
-                    <input type="text" id="name" required placeholder="أدخل اسمك الكامل">
+    <!-- شريط الفلترة السريع (طريقة منصات العرض العالمية) -->
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label>الماركة:</label>
+            <select id="brandFilter">
+                <option value="all">كل الماركات</option>
+                <option value="Mercedes">مرسيدس (Mercedes)</option>
+                <option value="Scania">سكانيا (Scania)</option>
+                <option value="Volvo">فولفو (Volvo)</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>نوع الناقل / الرأس:</label>
+            <select id="typeFilter">
+                <option value="tractor">رأس شاحنة (Tractor Unit)</option>
+                <option value="heavy">معدات ثقيلة</option>
+            </select>
+        </div>
+        <button class="filter-btn" onclick="filterStock()">تحديث العرض</button>
+    </div>
+
+    <!-- قسم مخزون الشاحنات -->
+    <section class="stock-section" id="stock">
+        <h2 class="section-title">أحدث رؤوس الشاحنات المتاحة للاستيراد</h2>
+        <div class="stock-grid">
+            
+            <div class="stock-card" data-brand="Mercedes">
+                <div class="stock-img-placeholder">مرسيدس أكتروس - معاينة المواصفات</div>
+                <div class="stock-details">
+                    <h3>Mercedes-Benz Actros 1845</h3>
+                    <ul class="specs-table">
+                        <li><span>سنة الصنع:</span> <span>2021 / 2022</span></li>
+                        <li><span>المحرك:</span> <span>Euro 6 (فعال واقتصادي)</span></li>
+                        <li><span>الحالة:</span> <span>استيراد أوروبا بحالة ممتازة</span></li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="inquireTruck('Mercedes Actros 1845')" class="btn-whatsapp-card">طلب تفاصيل السعر والشحن</a>
                 </div>
-                <div class="form-group">
-                    <label>نوع الشاحنة المطلوبة / الموديل:</label>
-                    <select id="truckType">
-                        <option value="مرسيدس أكتروس (Mercedes Actros)">مرسيدس أكتروس (Mercedes Actros)</option>
-                        <option value="سكانيا (Scania)">سكانيا (Scania)</option>
-                        <option value="فولفو (Volvo)">فولفو (Volvo)</option>
-                        <option value="أخرى / استفسار خاص">أخرى / استفسار خاص</option>
-                    </select>
+            </div>
+
+            <div class="stock-card" data-brand="Scania">
+                <div class="stock-img-placeholder">سكانيا آر سيريز - معاينة المواصفات</div>
+                <div class="stock-details">
+                    <h3>Scania R450 Highline</h3>
+                    <ul class="specs-table">
+                        <li><span>سنة الصنع:</span> <span>2020 / 2021</span></li>
+                        <li><span>المحرك:</span> <span>V8 / 6 سلندر قوي</span></li>
+                        <li><span>الحالة:</span> <span>وارد مباشر النمسا/ألمانيا</span></li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="inquireTruck('Scania R450 Highline')" class="btn-whatsapp-card">طلب تفاصيل السعر والشحن</a>
                 </div>
-                <div class="form-group">
-                    <label>طبيعة الطلب التجاري:</label>
-                    <select id="requestType">
-                        <option value="استيراد وتصدير حاويات">استيراد وتصدير حاويات وشاحنات</option>
-                        <option value="استفسار عن الأسعار والشحن">استفسار عن الأسعار والشحن</option>
-                    </select>
+            </div>
+
+            <div class="stock-card" data-brand="Volvo">
+                <div class="stock-img-placeholder">فولفو إف إتش - معاينة المواصفات</div>
+                <div class="stock-details">
+                    <h3>Volvo FH 500 I-Save</h3>
+                    <ul class="specs-table">
+                        <li><span>سنة الصنع:</span> <span>2022</span></li>
+                        <li><span>المحرك:</span> <span>تقنية توفير الوقود الحديثة</span></li>
+                        <li><span>الحالة:</span> <span>جاهز للشحن والتخليص</span></li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="inquireTruck('Volvo FH 500')" class="btn-whatsapp-card">طلب تفاصيل السعر والشحن</a>
                 </div>
-                <button type="submit" class="btn-submit">إرسال الطلب عبر واتساب فوراً</button>
-            </form>
+            </div>
+
         </div>
     </section>
 
-    <section class="contact-footer">
-        <h3>قنوات الاتصال الرسمية</h3>
+    <section class="contact-footer" id="contact">
+        <h3>Vienna Import - فيينا للاستيراد والتصدير</h3>
         <p>النمسا (واتساب): <span>+43 676 7919720</span></p>
         <p>مصر (اتصال مباشر): <span>+20 100 504 5120</span></p>
-        <p style="margin-top: 30px; font-size: 14px; color: #666;">© 2026 Vienna Import - فيينا للاستيراد. جميع الحقوق محفوظة.</p>
+        <p style="margin-top: 25px; font-size: 13px; color: #555;">© 2026 Vienna Import. جميع الحقوق محفوظة.</p>
     </section>
 
     <script>
-        function sendToWhatsApp(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const truck = document.getElementById('truckType').value;
-            const req = document.getElementById('requestType').value;
-
-            const message = `مرحباً، أنا ${name}%0aأرغب في الاستفسار عن:%0a- الشاحنة: ${truck}%0a- نوع الطلب: ${req}`;
-            const phone = "436767919720"; // رقم الواتساب النمساوي
+        function inquireTruck(truckName) {
+            const message = `مرحباً فيينا للاستيراد، أرغب في معرفة تفاصيل استيراد الشاحنة: ${truckName} وشروط التسليم في مصر.`;
+            const phone = "436767919720";
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+
+        function filterStock() {
+            const brand = document.getElementById('brandFilter').value;
+            const cards = document.querySelectorAll('.stock-card');
+            
+            cards.forEach(card => {
+                if(brand === 'all' || card.getAttribute('data-brand') === brand) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
     </script>
 
